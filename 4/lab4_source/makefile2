@@ -1,0 +1,4 @@
+ multi-fork: multi-fork.o
+	gcc  multi-fork.o -o  multi-fork
+ multi-fork.o: multi-fork.c
+	gcc  multi-fork.c -c

@@ -1,0 +1,43 @@
+/**
+ * fork question.
+ * 
+ * Originally from Yale's SMP Lab 1 
+ * Modified by Dr. Zichen Xu
+ *
+ * What is output at LINE X?
+ *
+ * What is output at LINE Y?
+ */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+int value = 5;
+
+int main(int argc, char *argv[])
+{
+pid_t pid;
+
+	/* fork another process */
+	pid = fork();
+
+	if (pid < 0) { /* error occurred */
+		fprintf(stderr, "Fork Failed\n");
+
+		return 1;
+	}
+	else if (pid == 0) { /* child process */
+		value += 15;
+		printf("I am the child - value = %d\n",value); /* LINE X */
+	}
+	else { /* parent process */
+		/* parent will wait for the child to complete */
+		wait(NULL);
+	
+		printf("Child Completed ....\n");	
+		printf("I am the parent - value = %d\n",value); /* LINE Y */
+	}
+
+	return 0;
+}

@@ -1,0 +1,6 @@
+fork_problem:fork_problem.o
+	gcc fork_problem.o -o fork_problem
+fork_problem.o:fork_problem.c
+	gcc fork_problem.c -c
+
+
